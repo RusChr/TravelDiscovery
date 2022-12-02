@@ -29,17 +29,18 @@ struct ContentView: View {
 
 struct Category: Hashable {
 	let name, imageName: String
+	let color: Color
 }
 
 
 struct DiscoverCategoryView: View {
 	
 	let categories: [Category] = [
-		.init(name: "Art", imageName: "paintpalette.fill"),
-		.init(name: "Sport", imageName: "sportscourt.fill"),
-		.init(name: "Live Events", imageName: "music.mic"),
-		.init(name: "Food", imageName: "fork.knife"),
-		.init(name: "History", imageName: "books.vertical.fill")
+		.init(name: "Art", imageName: "paintpalette.fill", color: Color(.systemPink)),
+		.init(name: "Sport", imageName: "sportscourt.fill", color: Color(.systemGreen)),
+		.init(name: "Live Events", imageName: "music.mic", color: Color(.systemPurple)),
+		.init(name: "Food", imageName: "fork.knife", color: Color(.systemCyan)),
+		.init(name: "History", imageName: "books.vertical.fill", color: Color(.systemOrange))
 	]
 	
 	var body: some View {
@@ -49,9 +50,9 @@ struct DiscoverCategoryView: View {
 					VStack(spacing: 8) {
 						Image(systemName: category.imageName)
 							.font(.system(size: 24))
-							.foregroundColor(.white)
+							.foregroundColor(category.color)
 							.frame(width: 64, height: 64)
-							.background(.gray)
+							.background(Color(.init(white: 0.3, alpha: 1)))
 							.cornerRadius(.infinity)
 							.shadow(color: Color(.systemGray2), radius: 3, x: 0, y: 2)
 						
@@ -89,7 +90,6 @@ struct PopularDestinationsView: View {
 				Spacer()
 				Text("See all")
 					.font(.system(size: 12, weight: .semibold))
-					.foregroundColor(Color(.link))
 			}
 			.padding(.horizontal)
 			.padding(.top)
@@ -131,7 +131,18 @@ struct PopularDestinationsView: View {
 }
 
 
+struct Restaurant: Hashable {
+	let name, imageName, place, dish, rating: String
+}
+
+
 struct PopularRestaurantsView: View {
+	
+	let restaurants: [Restaurant] = [
+		.init(name: "Japan's Finest Tapas", imageName: "tapas", place: "Tokyo, Japan", dish: "Sushi", rating: "4.7"),
+		.init(name: "Bar & Grill", imageName: "bar_grill", place: "New York, US", dish: "Barbeque", rating: "4.9")
+	]
+	
 	var body: some View {
 		VStack {
 			HStack {
@@ -140,20 +151,47 @@ struct PopularRestaurantsView: View {
 				Spacer()
 				Text("See all")
 					.font(.system(size: 12, weight: .semibold))
-					.foregroundColor(Color(.link))
 			}
 			.padding(.horizontal)
 			.padding(.top)
 			
 			ScrollView(.horizontal, showsIndicators: false) {
 				HStack(spacing: 12) {
-					ForEach(0..<5, id: \.self) { _ in
-						Spacer()
-							.frame(width: 200, height: 64)
-							.background(Color.gray)
-							.cornerRadius(8)
-							.shadow(color: Color(.systemGray2), radius: 3, x: 0, y: 2)
-							.padding(.bottom)
+					ForEach(restaurants, id: \.self) { restaurant in
+						HStack {
+							Image(restaurant.imageName)
+								.resizable()
+								.scaledToFill()
+								.frame(width: 64, height: 64)
+								.clipped()
+								.cornerRadius(4)
+								.padding(6)
+							
+							VStack(alignment: .leading, spacing: 6) {
+								HStack {
+									Text(restaurant.name)
+									Spacer()
+									Button(action: {}, label: {
+										Image(systemName: "ellipsis")
+											.foregroundColor(.gray)
+									})
+								}
+								
+								Text("★ \(restaurant.rating) • \(restaurant.dish) • $$")
+									.font(.system(size: 12))
+								
+								Text(restaurant.place)
+							}
+							.font(.system(size: 12, weight: .semibold))
+							.foregroundColor(.black)
+							
+							Spacer()
+						}
+						.frame(width: 240)
+						.background(Color(.init(white: 0.9, alpha: 1)))
+						.cornerRadius(8)
+						.shadow(color: Color(.systemGray2), radius: 3, x: 0, y: 2)
+						.padding(.bottom)
 					}
 				}
 				.padding(.horizontal)
@@ -163,7 +201,19 @@ struct PopularRestaurantsView: View {
 }
 
 
+struct Creator: Hashable {
+	let name, imageName: String
+}
+
+
 struct TrendingCreatorsView: View {
+	
+	let creators: [Creator] = [
+		.init(name: "Amy Adams", imageName: "amy"),
+		.init(name: "Billy Childs", imageName: "billy"),
+		.init(name: "Sam Smith", imageName: "sam")
+	]
+	
 	var body: some View {
 		VStack {
 			HStack {
@@ -172,22 +222,28 @@ struct TrendingCreatorsView: View {
 				Spacer()
 				Text("See all")
 					.font(.system(size: 12, weight: .semibold))
-					.foregroundColor(Color(.link))
 			}
 			.padding(.horizontal)
 			.padding(.top)
 			
 			ScrollView(.horizontal, showsIndicators: false) {
-				HStack(spacing: 12) {
-					ForEach(0..<10, id: \.self) { _ in
-						VStack(spacing: 8) {
-							Spacer()
-								.frame(width: 50, height: 50)
-								.background(Color.gray)
+				HStack(alignment: .top, spacing: 12) {
+					ForEach(creators, id: \.self) { creator in
+						VStack(spacing: 4) {
+							Image(creator.imageName)
+								.resizable()
+								.scaledToFill()
+								.frame(width: 60, height: 60)
+								.clipped()
 								.cornerRadius(.infinity)
 								.shadow(color: Color(.systemGray2), radius: 3, x: 0, y: 2)
-								.padding(.bottom)
+								.padding(.bottom, 6)
+							
+							Text(creator.name)
+								.font(.system(size: 12, weight: .semibold))
+								.multilineTextAlignment(.center)
 						}
+						.frame(width: 60)
 					}
 				}
 				.padding(.horizontal)
