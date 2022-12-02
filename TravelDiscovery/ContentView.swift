@@ -53,7 +53,7 @@ struct DiscoverCategoryView: View {
 							.frame(width: 64, height: 64)
 							.background(.gray)
 							.cornerRadius(.infinity)
-							.shadow(color: Color(.gray), radius: 3, x: 0, y: 2)
+							.shadow(color: Color(.systemGray2), radius: 3, x: 0, y: 2)
 						
 						Text(category.name)
 							.font(.system(size: 14, weight: .semibold))
@@ -68,7 +68,19 @@ struct DiscoverCategoryView: View {
 }
 
 
+struct Destination: Hashable {
+	let name, country, imageName: String
+}
+
+
 struct PopularDestinationsView: View {
+	
+	let destinations: [Destination] = [
+		.init(name: "Paris", country: "France", imageName: "eiffel_tower"),
+		.init(name: "Tokyo", country: "Japan", imageName: "japan"),
+		.init(name: "New York", country: "US", imageName: "new_york")
+	]
+	
 	var body: some View {
 		VStack {
 			HStack {
@@ -83,14 +95,33 @@ struct PopularDestinationsView: View {
 			.padding(.top)
 			
 			ScrollView(.horizontal, showsIndicators: false) {
-				HStack(spacing: 8) {
-					ForEach(0..<5, id: \.self) { _ in
-						Spacer()
-							.frame(width: 120, height: 150)
-							.background(Color.gray)
-							.cornerRadius(8)
-							.shadow(color: Color(.gray), radius: 3, x: 0, y: 2)
-							.padding(.bottom)
+				HStack(spacing: 12) {
+					ForEach(destinations, id: \.self) { destination in
+						VStack(alignment: .leading, spacing: 0) {
+							Image(destination.imageName)
+								.resizable()
+								.scaledToFill()
+								.frame(width: 128, height: 128)
+								.clipped()
+								.cornerRadius(4)
+								.padding(.horizontal, 6)
+								.padding(.vertical, 6)
+							
+							Text(destination.name)
+								.font(.system(size: 12, weight: .semibold))
+								.foregroundColor(Color(.black))
+								.padding(.horizontal, 12)
+							
+							Text(destination.country)
+								.font(.system(size: 12, weight: .semibold))
+								.foregroundColor(Color(.systemGray))
+								.padding(.horizontal, 12)
+								.padding(.bottom, 8)
+						}
+						.background(Color(.init(white: 0.9, alpha: 1)))
+						.cornerRadius(8)
+						.shadow(color: Color(.systemGray2), radius: 3, x: 0, y: 2)
+						.padding(.bottom)
 					}
 				}
 				.padding(.horizontal)
@@ -115,13 +146,13 @@ struct PopularRestaurantsView: View {
 			.padding(.top)
 			
 			ScrollView(.horizontal, showsIndicators: false) {
-				HStack(spacing: 8) {
+				HStack(spacing: 12) {
 					ForEach(0..<5, id: \.self) { _ in
 						Spacer()
 							.frame(width: 200, height: 64)
 							.background(Color.gray)
 							.cornerRadius(8)
-							.shadow(color: Color(.gray), radius: 3, x: 0, y: 2)
+							.shadow(color: Color(.systemGray2), radius: 3, x: 0, y: 2)
 							.padding(.bottom)
 					}
 				}
@@ -147,14 +178,14 @@ struct TrendingCreatorsView: View {
 			.padding(.top)
 			
 			ScrollView(.horizontal, showsIndicators: false) {
-				HStack(spacing: 8) {
+				HStack(spacing: 12) {
 					ForEach(0..<10, id: \.self) { _ in
 						VStack(spacing: 8) {
 							Spacer()
 								.frame(width: 50, height: 50)
 								.background(Color.gray)
 								.cornerRadius(.infinity)
-								.shadow(color: Color(.gray), radius: 3, x: 0, y: 2)
+								.shadow(color: Color(.systemGray2), radius: 3, x: 0, y: 2)
 								.padding(.bottom)
 						}
 					}
