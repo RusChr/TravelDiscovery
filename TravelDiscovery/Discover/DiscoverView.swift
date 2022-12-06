@@ -42,9 +42,7 @@ struct DiscoverView: View {
 					
 					VStack {
 						PopularDestinationsView()
-						
 						PopularRestaurantsView()
-						
 						TrendingCreatorsView()
 					}
 					.background(Color.discoverBackground)
