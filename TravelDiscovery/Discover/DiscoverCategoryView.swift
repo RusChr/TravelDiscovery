@@ -24,9 +24,9 @@ struct DiscoverCategoryView: View {
 					VStack(spacing: 8) {
 						Image(systemName: category.imageName)
 							.font(.system(size: 24))
-							.foregroundColor(Color.color1)
+							.foregroundColor(Color.discoverGradient1)
 							.frame(width: 64, height: 64)
-							.background(Color(.init(white: 0.95, alpha: 1)))
+							.background(Color.discoverBackground)
 							.cornerRadius(.infinity)
 							.shadow(color: Color(.systemGray), radius: 2, x: 0, y: 1)
 						
@@ -46,6 +46,7 @@ struct DiscoverCategoryView: View {
 
 struct DiscoverCategoryView_Previews: PreviewProvider {
     static var previews: some View {
+		DiscoverView()
         DiscoverCategoryView()
     }
 }

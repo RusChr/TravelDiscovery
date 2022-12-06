@@ -17,6 +17,7 @@
 		5EB5A282293F3411000F3380 /* Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5A281293F3411000F3380 /* Creator.swift */; };
 		5EB5A284293F3453000F3380 /* SeeAllTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5A283293F3453000F3380 /* SeeAllTextView.swift */; };
 		5EB5A287293F34C3000F3380 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5A286293F34C3000F3380 /* Extensions.swift */; };
+		5EB5A289293F68DA000F3380 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5A288293F68DA000F3380 /* Modifiers.swift */; };
 		5EE4D1DB29377AE0007E974E /* TravelDiscoveryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE4D1DA29377AE0007E974E /* TravelDiscoveryApp.swift */; };
 		5EE4D1DD29377AE0007E974E /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE4D1DC29377AE0007E974E /* DiscoverView.swift */; };
 		5EE4D1DF29377AE1007E974E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EE4D1DE29377AE1007E974E /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		5EB5A281293F3411000F3380 /* Creator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creator.swift; sourceTree = "<group>"; };
 		5EB5A283293F3453000F3380 /* SeeAllTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllTextView.swift; sourceTree = "<group>"; };
 		5EB5A286293F34C3000F3380 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		5EB5A288293F68DA000F3380 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		5EE4D1D729377AE0007E974E /* TravelDiscovery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelDiscovery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EE4D1DA29377AE0007E974E /* TravelDiscoveryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDiscoveryApp.swift; sourceTree = "<group>"; };
 		5EE4D1DC29377AE0007E974E /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				5EB5A286293F34C3000F3380 /* Extensions.swift */,
+				5EB5A288293F68DA000F3380 /* Modifiers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				5EB5A27C293F33C4000F3380 /* Category.swift in Sources */,
 				5EB5A280293F33F7000F3380 /* Restaurant.swift in Sources */,
 				5EB5A284293F3453000F3380 /* SeeAllTextView.swift in Sources */,
+				5EB5A289293F68DA000F3380 /* Modifiers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

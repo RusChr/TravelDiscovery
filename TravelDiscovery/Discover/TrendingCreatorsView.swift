@@ -58,6 +58,7 @@ struct TrendingCreatorsView: View {
 
 struct TrendingCreatorsView_Previews: PreviewProvider {
     static var previews: some View {
+		DiscoverView()
         TrendingCreatorsView()
     }
 }

@@ -18,10 +18,10 @@ struct DiscoverView: View {
 	var body: some View {
 		NavigationView {
 			ZStack {
-				LinearGradient(gradient: Gradient(colors: [Color.color1, Color.color2]), startPoint: .topLeading, endPoint: .bottomTrailing)
+				LinearGradient(gradient: Gradient(colors: [Color.discoverGradient1, Color.discoverGradient2]), startPoint: .topLeading, endPoint: .bottomTrailing)
 					.ignoresSafeArea()
 				
-				Color(.init(white: 0.95, alpha: 1))
+				Color.discoverBackground
 					.frame(maxHeight: .infinity, alignment: .bottom)
 					.offset(y: 400)
 				
@@ -47,7 +47,7 @@ struct DiscoverView: View {
 						
 						TrendingCreatorsView()
 					}
-					.background(Color(.init(white: 0.95, alpha: 1)))
+					.background(Color.discoverBackground)
 					.cornerRadius(16)
 					.padding(.top, 16)
 				}
@@ -63,8 +63,3 @@ struct DiscoverView_Previews: PreviewProvider {
 		DiscoverView()
 	}
 }
-
-
-
-
-
