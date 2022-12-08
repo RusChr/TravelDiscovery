@@ -21,21 +21,25 @@ struct DiscoverCategoryView: View {
 		ScrollView(.horizontal, showsIndicators: false) {
 			HStack(alignment: .top, spacing: 4) {
 				ForEach(categories, id: \.self) { category in
-					VStack(spacing: 8) {
-						Image(systemName: category.imageName)
-							.font(.system(size: 24))
-							.foregroundColor(Color.discoverGradient1)
-							.frame(width: 64, height: 64)
-							.background(Color.discoverBackground)
-							.cornerRadius(.infinity)
-							.shadow(color: Color(.systemGray), radius: 2, x: 0, y: 1)
-						
-						Text(category.name)
-							.font(.system(size: 14, weight: .semibold))
-							.foregroundColor(.white)
-							.multilineTextAlignment(.center)
+					NavigationLink {
+						CategoryDetailsView()
+					} label: {
+						VStack(spacing: 8) {
+							Image(systemName: category.imageName)
+								.font(.system(size: 24))
+								.foregroundColor(Color.discoverGradient1)
+								.frame(width: 64, height: 64)
+								.background(Color.discoverBackground)
+								.cornerRadius(.infinity)
+								.shadow(color: Color(.systemGray), radius: 2, x: 0, y: 1)
+							
+							Text(category.name)
+								.font(.system(size: 14, weight: .semibold))
+								.foregroundColor(.white)
+								.multilineTextAlignment(.center)
+						}
+						.frame(width: 80)
 					}
-					.frame(width: 80)
 				}
 			}
 			.padding()
@@ -44,9 +48,37 @@ struct DiscoverCategoryView: View {
 }
 
 
+struct CategoryDetailsView: View {
+	var body: some View {
+		ScrollView {
+			ForEach(0..<5, id: \.self) { num in
+				VStack(alignment: .leading, spacing: 0) {
+					Image("art2")
+						.resizable()
+						.scaledToFill()
+					
+					Text("Demo")
+						.font(.system(size: 14, weight: .semibold))
+						.foregroundColor(.black)
+						.padding()
+				}
+				.asTile()
+				.padding()
+			}
+		}
+		.navigationTitle("Category")
+		.navigationBarTitleDisplayMode(.inline)
+		.scrollIndicators(.hidden)
+	}
+}
+
+
 struct DiscoverCategoryView_Previews: PreviewProvider {
     static var previews: some View {
-		DiscoverView()
-        DiscoverCategoryView()
+		NavigationView {
+			CategoryDetailsView()
+		}
+		//DiscoverView()
+//        DiscoverCategoryView()
     }
 }

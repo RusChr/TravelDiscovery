@@ -23,3 +23,9 @@ struct SeeAllModifier: ViewModifier {
 			.foregroundColor(Color.discoverGradient2)
 	}
 }
+
+struct Preview_Modifiers: PreviewProvider {
+	static var previews: some View {
+		DiscoverView()
+	}
+}
