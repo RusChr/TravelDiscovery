@@ -30,29 +30,33 @@ struct PopularDestinationsView: View {
 			ScrollView(.horizontal, showsIndicators: false) {
 				HStack(spacing: 12) {
 					ForEach(destinations, id: \.self) { destination in
-						VStack(alignment: .leading, spacing: 0) {
-							Image(destination.imageName)
-								.resizable()
-								.scaledToFill()
-								.frame(width: 128, height: 128)
-								.clipped()
-								.cornerRadius(4)
-								.padding(.horizontal, 6)
-								.padding(.vertical, 6)
-							
-							Text(destination.name)
-								.font(.system(size: 12, weight: .semibold))
-								.foregroundColor(Color(.black))
-								.padding(.horizontal, 12)
-							
-							Text(destination.country)
-								.font(.system(size: 12, weight: .semibold))
-								.foregroundColor(Color(.systemGray))
-								.padding(.horizontal, 12)
-								.padding(.bottom, 8)
+						NavigationLink {
+							FontTests()
+						} label: {
+							VStack(alignment: .leading, spacing: 0) {
+								Image(destination.imageName)
+									.resizable()
+									.scaledToFill()
+									.frame(width: 128, height: 128)
+									.clipped()
+									.cornerRadius(4)
+									.padding(.horizontal, 6)
+									.padding(.vertical, 6)
+								
+								Text(destination.name)
+									.font(.system(size: 12, weight: .semibold))
+									.foregroundColor(Color(.black))
+									.padding(.horizontal, 12)
+								
+								Text(destination.country)
+									.font(.system(size: 12, weight: .semibold))
+									.foregroundColor(Color(.systemGray))
+									.padding(.horizontal, 12)
+									.padding(.bottom, 8)
+							}
+							.asTile()
+							.padding(.bottom)
 						}
-						.asTile()
-						.padding(.bottom)
 					}
 				}
 				.padding(.horizontal)

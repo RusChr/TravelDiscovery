@@ -48,27 +48,72 @@ struct DiscoverCategoryView: View {
 }
 
 
+class CategoryDetailsViewModel: ObservableObject {
+	@Published var isLoading = true
+	@Published var places = [Int]()
+	
+	init() {
+		DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+			self.isLoading.toggle()
+		}
+	}
+}
+
+
+struct ActivityIndicatorView: UIViewRepresentable {
+	func makeUIView(context: Context) -> UIActivityIndicatorView {
+		let aiv = UIActivityIndicatorView(style: .large)
+		aiv.startAnimating()
+		aiv.color = .white
+		return aiv
+	}
+	
+	func updateUIView(_ uiView: UIActivityIndicatorView, context: Context) {
+		
+	}
+	
+	typealias UIViewType = UIActivityIndicatorView
+}
+
+
 struct CategoryDetailsView: View {
+	@ObservedObject var vm = CategoryDetailsViewModel()
+	
 	var body: some View {
-		ScrollView {
-			ForEach(0..<5, id: \.self) { num in
-				VStack(alignment: .leading, spacing: 0) {
-					Image("art2")
-						.resizable()
-						.scaledToFill()
-					
-					Text("Demo")
-						.font(.system(size: 14, weight: .semibold))
-						.foregroundColor(.black)
-						.padding()
+		ZStack {
+			if vm.isLoading {
+				VStack {
+					ActivityIndicatorView()
+					Text("Loading...")
+						.foregroundColor(.white)
+						.font(.system(size: 16, weight: .semibold))
 				}
-				.asTile()
 				.padding()
+				.background(Color(.darkGray))
+				.cornerRadius(10)
+				
+			} else {
+				ScrollView {
+					ForEach(0..<5, id: \.self) { num in
+						VStack(alignment: .leading, spacing: 0) {
+							Image("art2")
+								.resizable()
+								.scaledToFill()
+							
+							Text("Demo")
+								.font(.system(size: 14, weight: .semibold))
+								.foregroundColor(.black)
+								.padding()
+						}
+						.asTile()
+						.padding()
+					}
+				}
+				.navigationTitle("Category")
+				.navigationBarTitleDisplayMode(.inline)
+				.scrollIndicators(.hidden)
 			}
 		}
-		.navigationTitle("Category")
-		.navigationBarTitleDisplayMode(.inline)
-		.scrollIndicators(.hidden)
 	}
 }
 
@@ -78,7 +123,7 @@ struct DiscoverCategoryView_Previews: PreviewProvider {
 		NavigationView {
 			CategoryDetailsView()
 		}
-		//DiscoverView()
+		DiscoverView()
 //        DiscoverCategoryView()
     }
 }
