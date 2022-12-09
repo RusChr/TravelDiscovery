@@ -48,14 +48,34 @@ struct DiscoverCategoryView: View {
 }
 
 
+struct Place: Decodable, Hashable {
+	let id: Int
+	let name, thumbnail: String
+}
+
+
 class CategoryDetailsViewModel: ObservableObject {
 	@Published var isLoading = true
-	@Published var places = [Int]()
+	@Published var places = [Place]()
+	@Published var errorMessage = ""
 	
 	init() {
-		DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-			self.isLoading.toggle()
-		}
+		guard let url = URL(string: "https://travel.letsbuildthatapp.com/travel_discovery/category?name=art") else { return }
+		
+		URLSession.shared.dataTask(with: url) { data, resp, err in
+			DispatchQueue.main.async {
+				guard let data = data else { return }
+				
+				do {
+					self.places = try JSONDecoder().decode([Place].self, from: data)
+				} catch {
+					print("Failed to decode json:", error)
+					self.errorMessage = error.localizedDescription
+				}
+				
+				self.isLoading.toggle()
+			}
+		}.resume()
 	}
 }
 
@@ -93,25 +113,28 @@ struct CategoryDetailsView: View {
 				.cornerRadius(10)
 				
 			} else {
-				ScrollView {
-					ForEach(0..<5, id: \.self) { num in
-						VStack(alignment: .leading, spacing: 0) {
-							Image("art2")
-								.resizable()
-								.scaledToFill()
-							
-							Text("Demo")
-								.font(.system(size: 14, weight: .semibold))
-								.foregroundColor(.black)
-								.padding()
+				ZStack {
+					Text(vm.errorMessage)
+					ScrollView {
+						ForEach(vm.places, id: \.self) { place in
+							VStack(alignment: .leading, spacing: 0) {
+								Image("art1")
+									.resizable()
+									.scaledToFill()
+								
+								Text(place.name)
+									.font(.system(size: 14, weight: .semibold))
+									.foregroundColor(.black)
+									.padding()
+							}
+							.asTile()
+							.padding()
 						}
-						.asTile()
-						.padding()
 					}
+					.navigationTitle("Category")
+					.navigationBarTitleDisplayMode(.inline)
+					.scrollIndicators(.hidden)
 				}
-				.navigationTitle("Category")
-				.navigationBarTitleDisplayMode(.inline)
-				.scrollIndicators(.hidden)
 			}
 		}
 	}
