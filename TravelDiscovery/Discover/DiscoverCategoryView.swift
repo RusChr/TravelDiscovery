@@ -11,7 +11,7 @@ struct DiscoverCategoryView: View {
 
 	let categories: [Category] = [
 		.init(name: "Art", imageName: "paintpalette.fill"),
-		.init(name: "Sport", imageName: "sportscourt.fill"),
+		.init(name: "Sports", imageName: "sportscourt.fill"),
 		.init(name: "Live Events", imageName: "music.mic"),
 		.init(name: "Food", imageName: "fork.knife"),
 		.init(name: "History", imageName: "books.vertical.fill")
@@ -22,7 +22,7 @@ struct DiscoverCategoryView: View {
 			HStack(alignment: .top, spacing: 4) {
 				ForEach(categories, id: \.self) { category in
 					NavigationLink {
-						CategoryDetailsView()
+						CategoryDetailsView(name: category.name)
 					} label: {
 						VStack(spacing: 8) {
 							Image(systemName: category.imageName)

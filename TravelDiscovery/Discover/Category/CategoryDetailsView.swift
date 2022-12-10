@@ -9,15 +9,27 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 class CategoryDetailsViewModel: ObservableObject {
+	
 	@Published var isLoading = true
 	@Published var places = [Place]()
 	@Published var errorMessage = ""
 	
-	init() {
-		guard let url = URL(string: "https://travel.letsbuildthatapp.com/travel_discovery/category?name=art") else { return }
+	init(name: String) {
+		let urlString = "https://travel.letsbuildthatapp.com/travel_discovery/category?name=\(name.lowercased())".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+		
+		guard let url = URL(string: urlString) else {
+			isLoading.toggle()
+			return
+		}
 		
 		URLSession.shared.dataTask(with: url) { data, resp, err in
-			DispatchQueue.main.async {
+			if let statusCode = (resp as? HTTPURLResponse)?.statusCode, statusCode >= 400 {
+				self.isLoading.toggle()
+				self.errorMessage = "Bad status: \(statusCode)"
+				return
+			}
+			
+			DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 				guard let data = data else { return }
 				
 				do {
@@ -35,7 +47,14 @@ class CategoryDetailsViewModel: ObservableObject {
 
 
 struct CategoryDetailsView: View {
-	@ObservedObject var vm = CategoryDetailsViewModel()
+	
+	private let name: String
+	@ObservedObject private var vm: CategoryDetailsViewModel
+	
+	init(name: String) {
+		self.name = name
+		self.vm = .init(name: name)
+	}
 	
 	var body: some View {
 		ZStack {
@@ -52,7 +71,16 @@ struct CategoryDetailsView: View {
 				
 			} else {
 				ZStack {
-					Text(vm.errorMessage)
+					if !vm.errorMessage.isEmpty {
+						VStack(spacing: 16) {
+							Image(systemName: "xmark.circle.fill")
+								.font(.system(size: 64, weight: .semibold))
+								.foregroundColor(Color(.systemRed))
+							Text(vm.errorMessage)
+								.fontWeight(.semibold)
+						}
+					}
+					
 					ScrollView {
 						ForEach(vm.places, id: \.self) { place in
 							VStack(alignment: .leading, spacing: 0) {
@@ -71,7 +99,7 @@ struct CategoryDetailsView: View {
 							.padding()
 						}
 					}
-					.navigationTitle("Category")
+					.navigationTitle(name)
 					.navigationBarTitleDisplayMode(.inline)
 					.scrollIndicators(.hidden)
 				}
@@ -83,7 +111,8 @@ struct CategoryDetailsView: View {
 struct CategoryDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-        	CategoryDetailsView()
+			CategoryDetailsView(name: "Food")
         }
+		DiscoverView()
     }
 }

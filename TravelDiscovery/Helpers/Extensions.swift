@@ -28,42 +28,5 @@ extension View {
 struct Preview_Extensions: PreviewProvider {
 	static var previews: some View {
 		DiscoverView()
-		FontTests()
-	}
-}
-
-
-struct FontTests: View {
-	let size: CGFloat = 28
-	var body: some View {
-		ScrollView(showsIndicators: false) {
-			ForEach(UIFont.familyNames, id: \.self) { font in
-				HStack {
-					VStack(alignment: .leading, spacing: 4) {
-						Text(font)
-							.font(.system(size: 24))
-						
-						Text("Вайнах Телеком")
-							.font(Font.custom(font, size: size))
-						Text("Вайнах Телеком")
-							.font(Font.custom(font, size: size))
-							.textCase(.uppercase)
-						
-						Text("Vainakh Telecom")
-							.font(Font.custom(font, size: size))
-						Text("Vainakh Telecom")
-							.font(Font.custom(font, size: size))
-							.textCase(.uppercase)
-						
-						Divider()
-							.padding(.bottom)
-					}
-					.multilineTextAlignment(.leading)
-					
-					Spacer()
-				}
-				.padding(.horizontal)
-			}
-		}
 	}
 }

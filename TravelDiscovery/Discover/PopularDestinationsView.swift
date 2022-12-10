@@ -31,7 +31,7 @@ struct PopularDestinationsView: View {
 				HStack(spacing: 12) {
 					ForEach(destinations, id: \.self) { destination in
 						NavigationLink {
-							FontTests()
+							//
 						} label: {
 							VStack(alignment: .leading, spacing: 0) {
 								Image(destination.imageName)
