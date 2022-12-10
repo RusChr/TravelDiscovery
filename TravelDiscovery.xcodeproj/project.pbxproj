@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E819A9B2944BD22009AEFA1 /* CategoryDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E819A9A2944BD22009AEFA1 /* CategoryDetailsView.swift */; };
+		5E819A9D2944BE39009AEFA1 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E819A9C2944BE39009AEFA1 /* ActivityIndicatorView.swift */; };
+		5E819A9F2944BEBB009AEFA1 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E819A9E2944BEBB009AEFA1 /* Place.swift */; };
 		5EB5A273293F2FD6000F3380 /* PopularDestinationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5A272293F2FD6000F3380 /* PopularDestinationsView.swift */; };
 		5EB5A275293F315B000F3380 /* PopularRestaurantsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5A274293F315B000F3380 /* PopularRestaurantsView.swift */; };
 		5EB5A277293F31A7000F3380 /* TrendingCreatorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5A276293F31A7000F3380 /* TrendingCreatorsView.swift */; };
@@ -22,9 +25,13 @@
 		5EE4D1DD29377AE0007E974E /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE4D1DC29377AE0007E974E /* DiscoverView.swift */; };
 		5EE4D1DF29377AE1007E974E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EE4D1DE29377AE1007E974E /* Assets.xcassets */; };
 		5EE4D1E329377AE1007E974E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EE4D1E229377AE1007E974E /* Preview Assets.xcassets */; };
+		5EEAF94829438EE000B29C91 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5EEAF94729438EE000B29C91 /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E819A9A2944BD22009AEFA1 /* CategoryDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailsView.swift; sourceTree = "<group>"; };
+		5E819A9C2944BE39009AEFA1 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		5E819A9E2944BEBB009AEFA1 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		5EB5A272293F2FD6000F3380 /* PopularDestinationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDestinationsView.swift; sourceTree = "<group>"; };
 		5EB5A274293F315B000F3380 /* PopularRestaurantsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularRestaurantsView.swift; sourceTree = "<group>"; };
 		5EB5A276293F31A7000F3380 /* TrendingCreatorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCreatorsView.swift; sourceTree = "<group>"; };
@@ -49,15 +56,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EEAF94829438EE000B29C91 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E819A992944BCFC009AEFA1 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				5E819A9A2944BD22009AEFA1 /* CategoryDetailsView.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		5EB5A271293F2DA0000F3380 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				5E819A992944BCFC009AEFA1 /* Category */,
 				5EE4D1DC29377AE0007E974E /* DiscoverView.swift */,
 				5EB5A278293F31EA000F3380 /* DiscoverCategoryView.swift */,
 				5EB5A272293F2FD6000F3380 /* PopularDestinationsView.swift */,
@@ -75,6 +92,7 @@
 				5EB5A27D293F33DD000F3380 /* Destination.swift */,
 				5EB5A27F293F33F7000F3380 /* Restaurant.swift */,
 				5EB5A281293F3411000F3380 /* Creator.swift */,
+				5E819A9E2944BEBB009AEFA1 /* Place.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -84,6 +102,7 @@
 			children = (
 				5EB5A286293F34C3000F3380 /* Extensions.swift */,
 				5EB5A288293F68DA000F3380 /* Modifiers.swift */,
+				5E819A9C2944BE39009AEFA1 /* ActivityIndicatorView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -142,6 +161,9 @@
 			dependencies = (
 			);
 			name = TravelDiscovery;
+			packageProductDependencies = (
+				5EEAF94729438EE000B29C91 /* SDWebImageSwiftUI */,
+			);
 			productName = TravelDiscovery;
 			productReference = 5EE4D1D729377AE0007E974E /* TravelDiscovery.app */;
 			productType = "com.apple.product-type.application";
@@ -170,6 +192,9 @@
 				Base,
 			);
 			mainGroup = 5EE4D1CE29377AE0007E974E;
+			packageReferences = (
+				5EEAF94629438EE000B29C91 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 5EE4D1D829377AE0007E974E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -199,12 +224,15 @@
 				5EB5A277293F31A7000F3380 /* TrendingCreatorsView.swift in Sources */,
 				5EB5A273293F2FD6000F3380 /* PopularDestinationsView.swift in Sources */,
 				5EB5A282293F3411000F3380 /* Creator.swift in Sources */,
+				5E819A9B2944BD22009AEFA1 /* CategoryDetailsView.swift in Sources */,
 				5EB5A275293F315B000F3380 /* PopularRestaurantsView.swift in Sources */,
 				5EE4D1DD29377AE0007E974E /* DiscoverView.swift in Sources */,
+				5E819A9D2944BE39009AEFA1 /* ActivityIndicatorView.swift in Sources */,
 				5EE4D1DB29377AE0007E974E /* TravelDiscoveryApp.swift in Sources */,
 				5EB5A279293F31EA000F3380 /* DiscoverCategoryView.swift in Sources */,
 				5EB5A287293F34C3000F3380 /* Extensions.swift in Sources */,
 				5EB5A27E293F33DD000F3380 /* Destination.swift in Sources */,
+				5E819A9F2944BEBB009AEFA1 /* Place.swift in Sources */,
 				5EB5A27C293F33C4000F3380 /* Category.swift in Sources */,
 				5EB5A280293F33F7000F3380 /* Restaurant.swift in Sources */,
 				5EB5A284293F3453000F3380 /* SeeAllTextView.swift in Sources */,
@@ -345,8 +373,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -355,10 +383,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rcher.TravelDiscovery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -383,8 +413,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -393,10 +423,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rcher.TravelDiscovery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -422,6 +454,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5EEAF94629438EE000B29C91 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5EEAF94729438EE000B29C91 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5EEAF94629438EE000B29C91 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5EE4D1CF29377AE0007E974E /* Project object */;
 }
