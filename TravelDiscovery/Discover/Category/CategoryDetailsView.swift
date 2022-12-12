@@ -23,13 +23,13 @@ class CategoryDetailsViewModel: ObservableObject {
 		}
 		
 		URLSession.shared.dataTask(with: url) { data, resp, err in
-			if let statusCode = (resp as? HTTPURLResponse)?.statusCode, statusCode >= 400 {
-				self.isLoading.toggle()
-				self.errorMessage = "Bad status: \(statusCode)"
-				return
-			}
-			
 			DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+				if let statusCode = (resp as? HTTPURLResponse)?.statusCode, statusCode >= 400 {
+					self.isLoading.toggle()
+					self.errorMessage = "Bad status: \(statusCode)"
+					return
+				}
+				
 				guard let data = data else { return }
 				
 				do {

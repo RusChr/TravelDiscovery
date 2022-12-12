@@ -22,7 +22,7 @@ struct DiscoverCategoryView: View {
 			HStack(alignment: .top, spacing: 4) {
 				ForEach(categories, id: \.self) { category in
 					NavigationLink {
-						CategoryDetailsView(name: category.name)
+						NavigationLaziView(CategoryDetailsView(name: category.name))
 					} label: {
 						VStack(spacing: 8) {
 							Image(systemName: category.imageName)
@@ -44,6 +44,19 @@ struct DiscoverCategoryView: View {
 			}
 			.padding()
 		}
+	}
+}
+
+
+struct NavigationLaziView<T: View>: View {
+	let build: () -> T
+	
+	init(_ build: @autoclosure @escaping () -> T) {
+		self.build = build
+	}
+	
+	var body: T {
+		build()
 	}
 }
 
